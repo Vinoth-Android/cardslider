@@ -2,7 +2,7 @@ name: cardslider
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this lßine if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.5.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -32,13 +32,23 @@ dependencies:
     sdk: flutter
 
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_card_swiper: ^7.0.1
+
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  get: ^4.6.5   # Assuming you're using Get for state management
+  shared_preferences: ^2.1.0   # Add this line (or the latest version)
+  image_picker: ^0.8.7+3   # Add the image_picker package (or the latest version)
+  permission_handler: ^10.2.0  # Add the permission_handler package (or the latest version)
+  sqflite: ^2.2.8+4   # Add the latest version of sqflite
+  path: ^1.8.3     
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -57,6 +67,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/img.jpg
+    - assets/img2.jpg
+    - assets/img3.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
