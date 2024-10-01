@@ -1,4 +1,5 @@
-import 'package:cardslider/cardswip.dart';
+import 'package:cardslider/pages/cardswip.dart';
+import 'package:cardslider/pages/settingspage/settings.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = const Trial();
+  Widget currentScreen = const Cardswip();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class _HomeState extends State<Home> {
         shape: const CircularNotchedRectangle(),
         notchMargin: 3,
         child: SizedBox(
-          height: 60,
+          height: 50,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -63,7 +64,7 @@ class _HomeState extends State<Home> {
                   currentTab = 2;
                 });
               }),
-              buildNavItem(Icons.settings, "Trial", 3, () {
+              buildNavItem(Icons.star, "Trial", 3, () {
                 setState(() {
                   currentScreen = const Trial();
                   currentTab = 3;
@@ -79,7 +80,7 @@ class _HomeState extends State<Home> {
   Widget buildNavItem(
       IconData icon, String label, int tabIndex, VoidCallback onTap) {
     return MaterialButton(
-      minWidth: 40,
+      minWidth: 90,
       onPressed: onTap,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -100,12 +101,13 @@ class _HomeState extends State<Home> {
   }
 }
 
+// Dummy Pages for navigation
 class Cart extends StatelessWidget {
   const Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Cart Page'));
+    return const Center(child: Text('Cart Page'));
   }
 }
 
@@ -114,16 +116,7 @@ class Trial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Trial Page'));
-  }
-}
-
-class Settings extends StatelessWidget {
-  const Settings({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Settings Page'));
+    return const Center(child: Text('Trial Page'));
   }
 }
 
@@ -132,6 +125,6 @@ class Like extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Like Page'));
+    return const Center(child: Text('Like Page'));
   }
 }

@@ -9,7 +9,6 @@ class Cardswip extends StatefulWidget {
 }
 
 class _CardswipState extends State<Cardswip> {
-  // List of image containers
   List<Container> cards = [
     Container(
       alignment: Alignment.center,
@@ -37,9 +36,9 @@ class _CardswipState extends State<Cardswip> {
           padding: const EdgeInsets.all(0),
           child: GridView.count(
             crossAxisCount: 2,
-            childAspectRatio: 0.7,
+            childAspectRatio: 0.6,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: List.generate(
               4,
               (index) {
