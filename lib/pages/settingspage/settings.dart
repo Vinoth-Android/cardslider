@@ -1,7 +1,9 @@
 import 'package:cardslider/main.dart';
 import 'package:cardslider/pages/cardswip.dart';
 import 'package:cardslider/pages/home.dart';
+import 'package:cardslider/pages/settingspage/pages/address.dart';
 import 'package:cardslider/pages/settingspage/pages/editprofile.dart';
+import 'package:cardslider/pages/settingspage/pages/notificationsettings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
@@ -189,10 +191,21 @@ class _SettingsState extends State<Settings> {
           MaterialPageRoute(builder: (context) => EditProfileScreen()),
         );
       }),
-      _buildSettingsItem(Icons.location_on, 'Saved Address'),
+      _buildSettingsItem(Icons.location_on, 'Saved Address', onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AddressPage()),
+        );
+      }),
       _buildSettingsItem(Icons.language, 'Select Language'),
       _buildSettingsItem(Icons.credit_card, 'Saved Cards'),
-      _buildSettingsItem(Icons.notifications, 'Notification Settings'),
+      _buildSettingsItem(Icons.notifications, 'Notification Settings',
+          onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NotificationSettingsScreen()),
+        );
+      }),
     ];
   }
 
@@ -227,16 +240,20 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildBottomButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
         ElevatedButton(
-          onPressed: () {},
-          child: const Text('Logout'),
+          onPressed: () {
+            // Add your logout logic here
+          },
+          child: const Text('Logout'), // Button to perform Logout action
         ),
+        const SizedBox(height: 10), // Add some space between the buttons
         ElevatedButton(
-          onPressed: () {},
-          child: const Text('Login'),
+          onPressed: () {
+            // Add your login logic here
+          },
+          child: const Text('Login'), // Button to perform Login action
         ),
       ],
     );

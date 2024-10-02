@@ -1,5 +1,8 @@
 import 'package:cardslider/pages/cardswip.dart';
+import 'package:cardslider/pages/cart.dart';
 import 'package:cardslider/pages/settingspage/settings.dart';
+import 'package:cardslider/pages/like.dart';
+import 'package:cardslider/pages/trial.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -98,33 +101,5 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
-  }
-}
-
-// Dummy Pages for navigation
-class Cart extends StatelessWidget {
-  const Cart({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Cart Page'));
-  }
-}
-
-class Trial extends StatelessWidget {
-  const Trial({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Trial Page'));
-  }
-}
-
-class Like extends StatelessWidget {
-  const Like({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Like Page'));
   }
 }
