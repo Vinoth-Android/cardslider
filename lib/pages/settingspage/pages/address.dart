@@ -4,6 +4,17 @@ class AddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Address'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Go back to the previous screen
+          },
+        ),
+        backgroundColor:
+            const Color(0xFFF83758), // Set the app bar background color
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

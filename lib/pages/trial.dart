@@ -14,7 +14,9 @@ class _TrialState extends State<Trial> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple,
-      appBar: AppBar(title: const Text("Trial")),
+      appBar: AppBar(
+        title: const Text("Trial"),
+      ),
       body: Column(
         children: [
           // Custom AppBar Layout
@@ -22,27 +24,9 @@ class _TrialState extends State<Trial> {
             width: double.infinity,
             height: 40.0,
             padding: const EdgeInsets.symmetric(horizontal: 6.0),
-            child: Row(
+            child: const Row(
               children: [
-                // Back Button (Icon)
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  iconSize: 22.0,
-                  onPressed: () {
-                    Navigator.pop(context); // Navigate back on button press
-                  },
-                ),
-                const SizedBox(width: 4.0),
-                // Title Text
-                const Text(
-                  "Trail",
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
+                SizedBox(width: 4.0),
               ],
             ),
           ),

@@ -11,9 +11,9 @@ class Cardswip extends StatefulWidget {
 class _CardswipState extends State<Cardswip> {
   List<Container> cards = [
     Container(
-      alignment: Alignment.center,
-      child: Image.asset('assets/img.jpg'),
-    ),
+        alignment: Alignment.center,
+        child: Image.network(
+            "https://i.pinimg.com/564x/03/bd/9e/03bd9e110cfa2e3a5c12ab0ee81d966e.jpg")),
     Container(
       alignment: Alignment.center,
       child: Image.asset('assets/img2.jpg'),

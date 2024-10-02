@@ -49,7 +49,9 @@ dev_dependencies:
   image_picker: ^0.8.7+3   # Add the image_picker package (or the latest version)
   permission_handler: ^10.2.0  # Add the permission_handler package (or the latest version)
   sqflite: ^2.2.8+4   # Add the latest version of sqflite
-  path: ^1.8.3     
+  path: ^1.8.3  
+  intl: ^0.17.0    
+  google_fonts: ^5.1.0  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

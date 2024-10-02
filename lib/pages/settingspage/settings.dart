@@ -1,9 +1,12 @@
 import 'package:cardslider/main.dart';
 import 'package:cardslider/pages/cardswip.dart';
 import 'package:cardslider/pages/home.dart';
+import 'package:cardslider/pages/orders.dart';
+import 'package:cardslider/pages/settingspage/chatbot.dart';
 import 'package:cardslider/pages/settingspage/pages/address.dart';
 import 'package:cardslider/pages/settingspage/pages/editprofile.dart';
 import 'package:cardslider/pages/settingspage/pages/notificationsettings.dart';
+import 'package:cardslider/pages/settingspage/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
@@ -139,24 +142,42 @@ class _SettingsState extends State<Settings> {
       crossAxisCount: 2,
       childAspectRatio: 1.2,
       children: [
-        _buildGridItem(Icons.shopping_bag, 'Orders'),
-        _buildGridItem(Icons.favorite, 'Wishlist'),
+        _buildGridItem(Icons.shopping_bag, 'Orders', onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => OrderDetailsPage()),
+          );
+        }),
+        _buildGridItem(Icons.favorite, 'Wishlist', onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WishlistPage()),
+          );
+        }),
         _buildGridItem(Icons.local_offer, 'Coupons'),
-        _buildGridItem(Icons.headset_mic, 'Help Center'),
+        _buildGridItem(Icons.headset_mic, 'Help Center', onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatBotScreen()),
+          );
+        }),
       ],
     );
   }
 
-  Widget _buildGridItem(IconData icon, String label) {
-    return Card(
-      elevation: 4,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 40),
-          const SizedBox(height: 8),
-          Text(label),
-        ],
+  Widget _buildGridItem(IconData icon, String label, {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap, // Handle the onTap event
+      child: Card(
+        elevation: 4,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40),
+            const SizedBox(height: 8),
+            Text(label),
+          ],
+        ),
       ),
     );
   }
@@ -198,7 +219,6 @@ class _SettingsState extends State<Settings> {
         );
       }),
       _buildSettingsItem(Icons.language, 'Select Language'),
-      _buildSettingsItem(Icons.credit_card, 'Saved Cards'),
       _buildSettingsItem(Icons.notifications, 'Notification Settings',
           onTap: () {
         Navigator.push(

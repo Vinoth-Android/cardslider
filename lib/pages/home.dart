@@ -47,7 +47,8 @@ class _HomeState extends State<Home> {
         child: SizedBox(
           height: 50,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment:
+                MainAxisAlignment.start, // Align items to the start
             children: <Widget>[
               buildNavItem(Icons.settings, "Settings", 0, () {
                 setState(() {
@@ -55,12 +56,14 @@ class _HomeState extends State<Home> {
                   currentTab = 0;
                 });
               }),
+              const SizedBox(width: 0), // Adjust space between items
               buildNavItem(Icons.thumb_up, "Like", 1, () {
                 setState(() {
                   currentScreen = const Like();
                   currentTab = 1;
                 });
               }),
+              const Spacer(), // Add spacer to push other items to the right
               buildNavItem(Icons.card_travel, "Cart", 2, () {
                 setState(() {
                   currentScreen = const Cart();
