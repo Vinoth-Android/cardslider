@@ -1,5 +1,6 @@
 import 'package:cardslider/main.dart';
 import 'package:cardslider/pages/cardswip.dart';
+import 'package:cardslider/pages/coupons.dart';
 import 'package:cardslider/pages/home.dart';
 import 'package:cardslider/pages/orders.dart';
 import 'package:cardslider/pages/settingspage/chatbot.dart';
@@ -145,20 +146,25 @@ class _SettingsState extends State<Settings> {
         _buildGridItem(Icons.shopping_bag, 'Orders', onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => OrderDetailsPage()),
+            MaterialPageRoute(builder: (context) => const OrderDetailsPage()),
           );
         }),
         _buildGridItem(Icons.favorite, 'Wishlist', onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => WishlistPage()),
+            MaterialPageRoute(builder: (context) => const WishlistPage()),
           );
         }),
-        _buildGridItem(Icons.local_offer, 'Coupons'),
+        _buildGridItem(Icons.local_offer, 'Coupons', onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CouponsScreen()),
+          );
+        }),
         _buildGridItem(Icons.headset_mic, 'Help Center', onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ChatBotScreen()),
+            MaterialPageRoute(builder: (context) => const ChatBotScreen()),
           );
         }),
       ],
@@ -209,7 +215,7 @@ class _SettingsState extends State<Settings> {
         // Navigate to EditProfileScreen
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EditProfileScreen()),
+          MaterialPageRoute(builder: (context) => const EditProfileScreen()),
         );
       }),
       _buildSettingsItem(Icons.location_on, 'Saved Address', onTap: () {
@@ -223,7 +229,8 @@ class _SettingsState extends State<Settings> {
           onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NotificationSettingsScreen()),
+          MaterialPageRoute(
+              builder: (context) => const NotificationSettingsScreen()),
         );
       }),
     ];
@@ -263,17 +270,21 @@ class _SettingsState extends State<Settings> {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {
-            // Add your logout logic here
-          },
-          child: const Text('Logout'), // Button to perform Logout action
+          onPressed: () {},
+          child: const Text('Logout'),
         ),
-        const SizedBox(height: 10), // Add some space between the buttons
+        const SizedBox(height: 10),
         ElevatedButton(
-          onPressed: () {
-            // Add your login logic here
-          },
-          child: const Text('Login'), // Button to perform Login action
+          onPressed: () {},
+          child: const Text('Login'),
+        ),
+        const SizedBox(height: 10),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            'Add Account',
+            style: TextStyle(color: Colors.red),
+          ),
         ),
       ],
     );

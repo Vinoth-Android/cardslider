@@ -74,6 +74,7 @@ flutter:
     - assets/img.jpg
     - assets/img2.jpg
     - assets/img3.jpg
+    - assets/Vinoth.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
