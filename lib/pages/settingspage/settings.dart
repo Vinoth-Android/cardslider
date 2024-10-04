@@ -1,7 +1,4 @@
-import 'package:cardslider/main.dart';
-import 'package:cardslider/pages/cardswip.dart';
 import 'package:cardslider/pages/coupons.dart';
-import 'package:cardslider/pages/home.dart';
 import 'package:cardslider/pages/orders.dart';
 import 'package:cardslider/pages/settingspage/chatbot.dart';
 import 'package:cardslider/pages/settingspage/pages/address.dart';
@@ -9,7 +6,6 @@ import 'package:cardslider/pages/settingspage/pages/editprofile.dart';
 import 'package:cardslider/pages/settingspage/pages/notificationsettings.dart';
 import 'package:cardslider/pages/settingspage/wishlist.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});

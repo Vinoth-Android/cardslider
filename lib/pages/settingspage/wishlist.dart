@@ -1,3 +1,4 @@
+import 'package:cardslider/pages/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,8 +12,6 @@ class WishlistPage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 80),
-
-          // AppBar Section
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             height: 50,
@@ -97,22 +96,24 @@ class WishlistPage extends StatelessWidget {
               ),
             ),
           ),
-
-          // GridView of Product Cards
           Expanded(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Still 2 items per row
-                  mainAxisSpacing: 10, // Increased vertical space between cards
-                  crossAxisSpacing:
-                      10, // Increased horizontal space between cards
-                  childAspectRatio:
-                      0.55, // Adjusted ratio to fit larger content
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.55,
                 ),
                 itemBuilder: (context, index) {
-                  return const ProductCard();
+                  return const ProductCard(
+                    image: 'assets/Vinoth.jpg',
+                    productName: 'Bluebell hand block tiered dress',
+                    price: '₹1000',
+                    oldPrice: '₹1500',
+                    reviews: '2k',
+                  );
                 },
                 itemCount: 50,
               ),
@@ -127,7 +128,7 @@ class WishlistPage extends StatelessWidget {
 class CustomChip extends StatelessWidget {
   final String label;
 
-  const CustomChip({required this.label});
+  const CustomChip({required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -151,39 +152,50 @@ class CustomChip extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final String image;
+  final String productName;
+  final String price;
+  final String oldPrice;
+  final String reviews;
+
+  const ProductCard({
+    required this.image,
+    required this.productName,
+    required this.price,
+    required this.oldPrice,
+    required this.reviews,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(1.0), // Increased padding for more space
+      padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius:
-            BorderRadius.circular(10), // Added border radius for rounded edges
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Center Image
           Stack(
             children: [
               Container(
                 width: double.infinity,
-                height: 250.0, // Increased image height to make the card larger
+                height: 250.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/Vinoth.jpg'),
-                    fit: BoxFit.cover, // Keeps image cover
+                  image: DecorationImage(
+                    image: AssetImage(image),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -193,7 +205,7 @@ class ProductCard extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.clear),
-                  iconSize: 25.0, // Larger icon for better usability
+                  iconSize: 25.0,
                   padding: const EdgeInsets.all(8.0),
                   constraints: const BoxConstraints(),
                   color: Colors.black,
@@ -205,7 +217,7 @@ class ProductCard extends StatelessWidget {
                 right: 30.0,
                 child: SizedBox(
                   width: 30.0,
-                  height: 40.0, // Larger button height
+                  height: 40.0,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -213,13 +225,19 @@ class ProductCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigate to the Cart page when pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Cart()),
+                      );
+                    },
                     child: const Text(
                       'Add to Cart',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
-                        fontSize: 15.0, // Increased font size for button text
+                        fontSize: 15.0,
                       ),
                     ),
                   ),
@@ -227,61 +245,57 @@ class ProductCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-              height: 15.0), // Increased space between image and text
-          // Product Name
-          const Text(
-            'Bluebell hand block tiered dress',
-            style: TextStyle(
+          const SizedBox(height: 15.0),
+          Text(
+            productName,
+            style: const TextStyle(
               fontFamily: 'Poppins',
-              fontSize: 15.0, // Larger font size for product name
+              fontSize: 15.0,
               fontWeight: FontWeight.w500,
               color: Colors.black,
             ),
           ),
-          const SizedBox(height: 8.0), // Space between product name and price
-          // Price Row
-          const Row(
+          const SizedBox(height: 8.0),
+          Row(
             children: [
               Text(
-                '₹1000',
-                style: TextStyle(
+                price,
+                style: const TextStyle(
                   fontFamily: 'Poppins-SemiBold',
-                  fontSize: 13.0, // Larger font size for the price
+                  fontSize: 13.0,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(width: 5.0),
+              const SizedBox(width: 5.0),
               Text(
-                '₹1500',
-                style: TextStyle(
+                oldPrice,
+                style: const TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 13.0, // Larger font size for original price
+                  fontSize: 13.0,
                   color: Colors.black,
                   decoration: TextDecoration.lineThrough,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 8.0), // Space between price and star reviews
-          // Star Reviews Row
-          const Row(
+          const SizedBox(height: 8.0),
+          Row(
             children: [
-              Text(
+              const Text(
                 '★',
                 style: TextStyle(
-                  fontSize: 12.0, // Larger star icon size
+                  fontSize: 12.0,
                   color: Colors.orange,
                   height: 1.3,
                 ),
               ),
-              SizedBox(width: 1.1),
+              const SizedBox(width: 1.1),
               Text(
-                '( 2k Reviews )',
-                style: TextStyle(
+                '( $reviews Reviews )',
+                style: const TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 13.0, // Slightly larger review text size
+                  fontSize: 13.0,
                   color: Colors.black,
                 ),
               ),

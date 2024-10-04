@@ -2,7 +2,7 @@ import 'package:cardslider/pages/cardswip.dart';
 import 'package:cardslider/pages/cart.dart';
 import 'package:cardslider/pages/settingspage/settings.dart';
 import 'package:cardslider/pages/like.dart';
-import 'package:cardslider/pages/trial.dart';
+import 'package:cardslider/pages/search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -17,8 +17,8 @@ class _HomeState extends State<Home> {
   final List<Widget> screens = [
     const Settings(),
     const Like(),
+    Search(),
     const Cart(),
-    const Trial(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -31,14 +31,14 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            currentScreen = const Cardswip(); // Navigate to Cardswip page
-            currentTab = 4; // Update tab index if needed
+            currentScreen = const Cardswip();
+            currentTab = 4;
           });
         },
         backgroundColor: Colors.lightBlue,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
-        child: const Icon(Icons.home), // FAB icon
+        child: const Icon(Icons.home),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -47,8 +47,7 @@ class _HomeState extends State<Home> {
         child: SizedBox(
           height: 50,
           child: Row(
-            mainAxisAlignment:
-                MainAxisAlignment.start, // Align items to the start
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               buildNavItem(Icons.settings, "Settings", 0, () {
                 setState(() {
@@ -56,23 +55,23 @@ class _HomeState extends State<Home> {
                   currentTab = 0;
                 });
               }),
-              const SizedBox(width: 0), // Adjust space between items
+              const SizedBox(width: 0),
               buildNavItem(Icons.thumb_up, "Like", 1, () {
                 setState(() {
                   currentScreen = const Like();
                   currentTab = 1;
                 });
               }),
-              const Spacer(), // Add spacer to push other items to the right
-              buildNavItem(Icons.card_travel, "Cart", 2, () {
+              const Spacer(),
+              buildNavItem(Icons.search, "Search", 2, () {
                 setState(() {
-                  currentScreen = const Cart();
+                  currentScreen = Search();
                   currentTab = 2;
                 });
               }),
-              buildNavItem(Icons.star, "Trial", 3, () {
+              buildNavItem(Icons.shopping_cart, "Cart", 3, () {
                 setState(() {
-                  currentScreen = const Trial();
+                  currentScreen = const Cart();
                   currentTab = 3;
                 });
               }),

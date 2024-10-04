@@ -22,7 +22,7 @@ class CouponsCard extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: const Color(0xFF18123B), // Dark background color
+            color: const Color(0xFF18123B),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
@@ -30,7 +30,6 @@ class CouponsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Token and Amount row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,15 +56,13 @@ class CouponsCard extends StatelessWidget {
                 const SizedBox(height: 5),
                 const Divider(
                   color: Colors.white70,
-                  thickness: 1.5, // Solid divider
+                  thickness: 1.5,
                 ),
                 const SizedBox(height: 8),
-
-                // Icon and first purchase label
                 Row(
                   children: [
                     const Icon(
-                      Icons.card_giftcard, // Gift icon
+                      Icons.card_giftcard,
                       color: Colors.purpleAccent,
                       size: 25,
                     ),
@@ -82,8 +79,6 @@ class CouponsCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-
-                // Discount details
                 Padding(
                   padding: const EdgeInsets.only(left: 35),
                   child: Text(
@@ -95,15 +90,13 @@ class CouponsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // Space before button
-
-                // Buy button
+                const SizedBox(height: 10),
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF8A56AC), // Purple button
+                      backgroundColor: const Color(0xFF8A56AC),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -125,7 +118,6 @@ class CouponsCard extends StatelessWidget {
             ),
           ),
         ),
-        // Left side cutout
         Positioned(
           left: 0,
           top: 0,
@@ -138,7 +130,6 @@ class CouponsCard extends StatelessWidget {
             ),
           ),
         ),
-        // Right side cutout
         Positioned(
           right: 0,
           top: 0,

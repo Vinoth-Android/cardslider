@@ -15,7 +15,6 @@ class _CartState extends State<Cart> {
       appBar: AppBar(title: const Text("Cart")),
       body: Column(
         children: [
-          // Top Section with Title and Items
           Container(
             height: 50.0,
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -77,8 +76,6 @@ class _CartState extends State<Cart> {
             ),
           ),
           const SizedBox(height: 10.0),
-
-          // Middle Section with Category Chips
           Container(
             height: 50.0,
             margin: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -118,11 +115,9 @@ class _CartState extends State<Cart> {
             ),
           ),
           const SizedBox(height: 10.0),
-
-          // Main Cart List
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Example number of items
+              itemCount: 30,
               itemBuilder: (context, index) {
                 return Container(
                   padding: const EdgeInsets.all(10.0),
@@ -134,18 +129,16 @@ class _CartState extends State<Cart> {
                   ),
                   child: Row(
                     children: [
-                      // Product Image
                       Container(
                         width: 120.0,
                         height: 150.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[300], // Placeholder for image
+                          color: Colors.grey[300],
                         ),
                         child: const Icon(Icons.image, size: 50),
                       ),
                       const SizedBox(width: 15.0),
-                      // Product Info
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,7 +187,6 @@ class _CartState extends State<Cart> {
                             const SizedBox(height: 5.0),
                             Row(
                               children: [
-                                // Quantity Selector
                                 IconButton(
                                   icon: const Icon(Icons.remove),
                                   onPressed: () {},
@@ -208,7 +200,6 @@ class _CartState extends State<Cart> {
                                   onPressed: () {},
                                 ),
                                 const Spacer(),
-                                // Remove Button
                                 TextButton.icon(
                                   onPressed: () {},
                                   icon: const Icon(Icons.delete,

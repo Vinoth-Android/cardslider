@@ -16,16 +16,18 @@ class _CardswipState extends State<Cardswip> {
             "https://i.pinimg.com/564x/03/bd/9e/03bd9e110cfa2e3a5c12ab0ee81d966e.jpg")),
     Container(
       alignment: Alignment.center,
-      child: Image.asset('assets/img2.jpg'),
+      child: Image.network(
+          "https://i.pinimg.com/564x/63/25/83/6325832867d331d6ce9023dc091cc514.jpg"),
     ),
     Container(
       alignment: Alignment.center,
-      child: Image.asset('assets/img2.jpg'),
+      child: Image.network(
+          "https://i.pinimg.com/564x/63/25/83/6325832867d331d6ce9023dc091cc514.jpg"),
     ),
     Container(
-      alignment: Alignment.center,
-      child: Image.asset('assets/img3.jpg'),
-    ),
+        alignment: Alignment.center,
+        child: Image.network(
+            "https://i.pinimg.com/564x/63/25/83/6325832867d331d6ce9023dc091cc514.jpg")),
   ];
 
   @override
