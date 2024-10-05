@@ -3,6 +3,7 @@ import 'package:cardslider/pages/orders.dart';
 import 'package:cardslider/pages/settingspage/chatbot.dart';
 import 'package:cardslider/pages/settingspage/pages/address.dart';
 import 'package:cardslider/pages/settingspage/pages/editprofile.dart';
+import 'package:cardslider/pages/settingspage/pages/loginpage.dart';
 import 'package:cardslider/pages/settingspage/pages/notificationsettings.dart';
 import 'package:cardslider/pages/settingspage/wishlist.dart';
 import 'package:flutter/material.dart';
@@ -271,7 +272,14 @@ class _SettingsState extends State<Settings> {
         ),
         const SizedBox(height: 10),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      const LoginPage()), // Navigate to LoginPage
+            );
+          },
           child: const Text('Login'),
         ),
         const SizedBox(height: 10),
