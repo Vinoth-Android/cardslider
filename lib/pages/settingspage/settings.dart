@@ -1,6 +1,7 @@
 import 'package:cardslider/pages/coupons.dart';
 import 'package:cardslider/pages/orders.dart';
 import 'package:cardslider/pages/settingspage/chatbot.dart';
+import 'package:cardslider/pages/settingspage/pages/add_account.dart';
 import 'package:cardslider/pages/settingspage/pages/address.dart';
 import 'package:cardslider/pages/settingspage/pages/editprofile.dart';
 import 'package:cardslider/pages/settingspage/pages/loginpage.dart';
@@ -284,9 +285,15 @@ class _SettingsState extends State<Settings> {
         ),
         const SizedBox(height: 10),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            // Navigate to AddAccountPage
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AddAccount()),
+            );
+          },
           child: const Text(
-            'Add Account',
+            ('Add Account'),
             style: TextStyle(color: Colors.red),
           ),
         ),
