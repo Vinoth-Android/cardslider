@@ -8,12 +8,12 @@ class AddAccount extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFEAEAEA),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFEAEAEA), // Set background same as body
-        elevation: 0, // Remove shadow
+        backgroundColor: const Color(0xFFEAEAEA),
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context); // Navigate back when pressed
+            Navigator.pop(context);
           },
         ),
       ),
@@ -22,7 +22,7 @@ class AddAccount extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 1), // Adjusted height after app bar
+            const SizedBox(height: 1),
             const Text(
               "Welcome Back",
               style: TextStyle(
@@ -79,7 +79,7 @@ class AddAccount extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             const Visibility(
-              visible: false, // Set to true when login fails
+              visible: false,
               child: Center(
                 child: Text(
                   'Login failed. Please try again',
@@ -94,9 +94,7 @@ class AddAccount extends StatelessWidget {
             const SizedBox(height: 1),
             Center(
               child: MaterialButton(
-                onPressed: () {
-                  // Handle login button press
-                },
+                onPressed: () {},
                 color: const Color(0xFF242038),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -127,9 +125,7 @@ class AddAccount extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {
-                    // Handle sign-up button press
-                  },
+                  onPressed: () {},
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(

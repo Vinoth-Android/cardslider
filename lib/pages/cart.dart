@@ -8,6 +8,22 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  List<int> productQuantities = List.generate(30, (index) => 1);
+
+  void _increaseQuantity(int index) {
+    setState(() {
+      productQuantities[index]++;
+    });
+  }
+
+  void _decreaseQuantity(int index) {
+    setState(() {
+      if (productQuantities[index] > 1) {
+        productQuantities[index]--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,15 +205,15 @@ class _CartState extends State<Cart> {
                               children: [
                                 IconButton(
                                   icon: const Icon(Icons.remove),
-                                  onPressed: () {},
+                                  onPressed: () => _decreaseQuantity(index),
                                 ),
-                                const Text(
-                                  '1',
-                                  style: TextStyle(fontSize: 16.0),
+                                Text(
+                                  '${productQuantities[index]}',
+                                  style: const TextStyle(fontSize: 16.0),
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.add),
-                                  onPressed: () {},
+                                  onPressed: () => _increaseQuantity(index),
                                 ),
                                 const Spacer(),
                                 TextButton.icon(
