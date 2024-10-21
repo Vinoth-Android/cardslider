@@ -57,7 +57,7 @@ class NotificationSettingsScreen extends StatelessWidget {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: NotificationSettingsScreen(),
   ));
 }
