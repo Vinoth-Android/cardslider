@@ -268,7 +268,10 @@ class _SettingsState extends State<Settings> {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            // Show the logout confirmation dialog
+            _showLogoutConfirmationDialog();
+          },
           child: const Text('Logout'),
         ),
         const SizedBox(height: 10),
@@ -298,6 +301,42 @@ class _SettingsState extends State<Settings> {
           ),
         ),
       ],
+    );
+  }
+
+  void _showLogoutConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Dismiss the dialog
+                Navigator.of(context).pop();
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Perform logout action here
+                Navigator.of(context).pop();
+                // You can add your logout logic here, e.g., clearing user data
+                // and navigating to the login page.
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                );
+              },
+              child: const Text('Logout'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
