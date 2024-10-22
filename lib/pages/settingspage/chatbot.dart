@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
+
   @override
   _ChatBotScreenState createState() => _ChatBotScreenState();
 }
@@ -10,7 +11,21 @@ class ChatBotScreen extends StatefulWidget {
 class _ChatBotScreenState extends State<ChatBotScreen> {
   List<Map<String, dynamic>> messages = [];
   final TextEditingController messageController = TextEditingController();
+  ScrollController _scrollController = ScrollController();
   bool isReceiveMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    messageController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   // Function to send a message
   void sendMessage() {
@@ -28,13 +43,20 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       });
 
       messageController.clear();
+
+      // Scroll to the latest message after sending
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
     }
   }
 
   // Function to format the time display (12:30 PM, Yesterday, or actual date)
   String formatMessageTime(DateTime time) {
     DateTime now = DateTime.now();
-    DateTime yesterday = now.subtract(Duration(days: 1));
+    DateTime yesterday = now.subtract(const Duration(days: 1));
 
     if (time.year == now.year &&
         time.month == now.month &&
@@ -47,6 +69,22 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     } else {
       return DateFormat.yMMMd()
           .format(time); // Full date format (e.g., Sep 28, 2024)
+    }
+  }
+
+  // Format the date for the header
+  String formatDate(DateTime date) {
+    DateTime today = DateTime.now();
+    DateTime yesterday = today.subtract(const Duration(days: 1));
+
+    if (DateFormat('yyyy-MM-dd').format(date) ==
+        DateFormat('yyyy-MM-dd').format(today)) {
+      return "Today";
+    } else if (DateFormat('yyyy-MM-dd').format(date) ==
+        DateFormat('yyyy-MM-dd').format(yesterday)) {
+      return "Yesterday";
+    } else {
+      return DateFormat('MMMM d').format(date); // Example: September 28
     }
   }
 
@@ -66,6 +104,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         children: [
           Expanded(
             child: ListView.builder(
+              controller: _scrollController,
               itemCount: messages.length,
               itemBuilder: (context, index) {
                 // Display the date only once per day
@@ -197,20 +236,10 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       ),
     );
   }
+}
 
-  // Format the date for the header
-  String formatDate(DateTime date) {
-    DateTime today = DateTime.now();
-    DateTime yesterday = today.subtract(const Duration(days: 1));
-
-    if (DateFormat('yyyy-MM-dd').format(date) ==
-        DateFormat('yyyy-MM-dd').format(today)) {
-      return "Today";
-    } else if (DateFormat('yyyy-MM-dd').format(date) ==
-        DateFormat('yyyy-MM-dd').format(yesterday)) {
-      return "Yesterday";
-    } else {
-      return DateFormat('MMMM d').format(date); // Example: September 28
-    }
-  }
+void main() {
+  runApp(const MaterialApp(
+    home: ChatBotScreen(),
+  ));
 }
