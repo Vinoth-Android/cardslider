@@ -94,7 +94,9 @@ class CouponsCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Add your button action here
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF8A56AC),
                       shape: RoundedRectangleBorder(
@@ -149,26 +151,16 @@ class CouponsCard extends StatelessWidget {
 
 class CouponsList extends StatelessWidget {
   CouponsList({super.key});
-  final List<Map<String, String>> coupons = [
-    {
-      'token': 'Token (10)',
-      'amount': 'Amount : ₹100',
-      'firstPurchase': 'First Purchase',
-      'discountDetails': '5% off for your next order',
-    },
-    {
-      'token': 'Token (10)',
-      'amount': 'Amount : ₹100',
-      'firstPurchase': 'First Purchase',
-      'discountDetails': '5% off for your next order',
-    },
-    {
-      'token': 'Token (10)',
-      'amount': 'Amount : ₹100',
-      'firstPurchase': 'First Purchase',
-      'discountDetails': '5% off for your next order',
-    },
-  ];
+
+  // Generating a large list of coupons dynamically
+  final List<Map<String, String>> coupons = List.generate(100, (index) {
+    return {
+      'token': 'Token (${index + 1})',
+      'amount': 'Amount: ₹${(index + 1) * 100}',
+      'firstPurchase': 'First Purchase Offer',
+      'discountDetails': '${5 + index % 5}% off for your next order',
+    };
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -189,13 +181,16 @@ class CouponsList extends StatelessWidget {
 
 class CouponsScreen extends StatelessWidget {
   const CouponsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Coupon Page",
-            style: TextStyle(
-                color: Colors.black, fontFamily: 'Poppins', fontSize: 18)),
+        title: const Text(
+          "Coupon Page",
+          style: TextStyle(
+              color: Colors.black, fontFamily: 'Poppins', fontSize: 18),
+        ),
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),

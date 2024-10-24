@@ -171,7 +171,7 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildGridItem(IconData icon, String label, {VoidCallback? onTap}) {
     return GestureDetector(
-      onTap: onTap, // Handle the onTap event
+      onTap: onTap,
       child: Card(
         elevation: 4,
         child: Column(
@@ -179,7 +179,7 @@ class _SettingsState extends State<Settings> {
           children: [
             Icon(icon, size: 40),
             const SizedBox(height: 8),
-            Text(label),
+            Text(label, style: const TextStyle(fontSize: 16)),
           ],
         ),
       ),
@@ -210,7 +210,6 @@ class _SettingsState extends State<Settings> {
     return [
       _buildSettingsItem(Icons.star, 'AIEcom Plus'),
       _buildSettingsItem(Icons.person, 'Edit Profile', onTap: () {
-        // Navigate to EditProfileScreen
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const EditProfileScreen()),
@@ -259,7 +258,7 @@ class _SettingsState extends State<Settings> {
       {VoidCallback? onTap}) {
     return ListTile(
       leading: Icon(icon),
-      title: Text(label),
+      title: Text(label, style: const TextStyle(fontSize: 16)),
       onTap: onTap ?? () {},
     );
   }
@@ -269,7 +268,6 @@ class _SettingsState extends State<Settings> {
       children: [
         ElevatedButton(
           onPressed: () {
-            // Show the logout confirmation dialog
             _showLogoutConfirmationDialog();
           },
           child: const Text('Logout'),
@@ -289,14 +287,13 @@ class _SettingsState extends State<Settings> {
         const SizedBox(height: 10),
         TextButton(
           onPressed: () {
-            // Navigate to AddAccountPage
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const AddAccount()),
             );
           },
           child: const Text(
-            ('Add Account'),
+            'Add Account',
             style: TextStyle(color: Colors.red),
           ),
         ),
@@ -314,17 +311,13 @@ class _SettingsState extends State<Settings> {
           actions: [
             TextButton(
               onPressed: () {
-                // Dismiss the dialog
                 Navigator.of(context).pop();
               },
               child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
-                // Perform logout action here
                 Navigator.of(context).pop();
-                // You can add your logout logic here, e.g., clearing user data
-                // and navigating to the login page.
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
