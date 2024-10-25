@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {},
               color: const Color(0xFF242038),
               textColor: Colors.white,
-              child: const Text(
+              child: Text(
                 'Create Account',
                 style: TextStyle(
                   fontFamily: 'Poppins',
